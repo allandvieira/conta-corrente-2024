@@ -38,11 +38,16 @@
 
         static void ExibirInformacoesConta(ContaCorrente conta)
         {
+            // Saldo da conta
             decimal saldo = conta.VerSaldo();
+            
+            // Lista com as movimentações
             List<Movimentacao> extrato = conta.VerExtrato();
 
             Console.WriteLine($"Conta {conta.Numero}: {conta.Dono.Nome} {conta.Dono.Sobrenome}, CPF: {conta.Dono.CPF}, Tipo: {(conta.IsEspecial ? "Conta Especial" : "Conta Não Especial")}, Limite: {conta.Limite}, Saldo: {saldo}");
             Console.WriteLine("Extrato:");
+
+            // Foreach que percorre cada movimentação na lista de movimentações da conta
             foreach (var mov in extrato)
             {
                 Console.WriteLine($"Valor: {mov.Valor}, Tipo: {(mov.IsCredito ? "Crédito" : "Débito")}, Operação: {mov.TipoOperacao}, Situação: {mov.Situacao}");
@@ -118,7 +123,10 @@
 
         public void Transferir(ContaCorrente contaDestino, decimal valor)
         {
+            // Saca o valor da conta
             Sacar(valor);
+
+            // Verifica a ultima movimentação da lista com as "Movimentações", caso a situação seja diferente de cancelada, realiza a transferência.
             if (Movimentacoes.Last().Situacao != "Cancelada")
             {
                 contaDestino.Depositar(valor);
