@@ -11,7 +11,7 @@
 
             // Contas
             ContaCorrente conta1 = new ContaCorrente(1, cliente1, true, 1000);
-            ContaCorrente conta2 = new ContaCorrente(2, cliente2, false, 0); // Limite zerado
+            ContaCorrente conta2 = new ContaCorrente(2, cliente2, false, 0);
             ContaCorrente conta3 = new ContaCorrente(3, cliente3, true, 1500);
 
             // Depósitos
@@ -22,7 +22,7 @@
             // Saques
             conta1.Sacar(200);
             conta2.Sacar(400);
-            conta3.Sacar(3000); // Valor ajustado para ultrapassar o limite
+            conta3.Sacar(3000);
 
             // Transferência entre contas
             conta1.Transferir(conta2, 100);
@@ -59,9 +59,9 @@
     {
         public decimal Valor { get; set; }
         public bool IsCredito { get; set; }
-        public string TipoOperacao { get; set; } // Novo campo para armazenar o tipo de operação
-        public string Situacao { get; set; } // Novo campo para armazenar a situação da operação
-        public string MensagemErro { get; set; } // Novo campo para armazenar a mensagem de erro
+        public string TipoOperacao { get; set; }
+        public string Situacao { get; set; }
+        public string MensagemErro { get; set; }
     }
 
     public class Cliente
@@ -122,8 +122,8 @@
             if (Movimentacoes.Last().Situacao != "Cancelada")
             {
                 contaDestino.Depositar(valor);
-                Movimentacoes.Last().TipoOperacao = "Transferência"; // Ajusta a operação para Transferência
-                contaDestino.Movimentacoes.Last().TipoOperacao = "Transferência"; // Ajusta a operação para Transferência
+                Movimentacoes.Last().TipoOperacao = "Transferência";
+                contaDestino.Movimentacoes.Last().TipoOperacao = "Transferência";
             }
         }
 
