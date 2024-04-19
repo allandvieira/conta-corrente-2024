@@ -7,7 +7,7 @@ namespace GestaoEquipamentos.ConsoleApp
         static void Main(string[] args)
         {
             TelaEquipamento telaEquipamento = new TelaEquipamento();
-
+            a
             bool opcaoSairEscolhida = false;
 
             while (!opcaoSairEscolhida)
